@@ -24,7 +24,6 @@ def isMatch(s, p):
                 if counter>len(s):
                         return False
                 else:
-                        # "aab","c*a*b"
                         # 4. set left-top
                         count_s0 = 0
                         if s[0]==p[0] or p[0]=='?':
