@@ -24,7 +24,6 @@ class Solution(object):
                         index_symbol = nums.index('_')
                         nums[index_symbol]=nums[i]
                         nums[i]='_'
-                #print(nums)
             return len(nums)-nums.count('_')
 
 
