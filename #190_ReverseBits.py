@@ -18,5 +18,9 @@ class Solution:
 if __name__ == '__main__':
     s = Solution()
     n = '00000010100101000001111010011100'
-    r = s.reverseBits(n)
-    print(r)
+    #r = s.reverseBits(n)
+    #print(r)
+    n = 12
+    print(bin(n))
+    n>>=1
+    print(bin(n))
