@@ -4,26 +4,25 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n <= 1:
+        if n <= 2:
             return 0
-        elif n == 2:
-            return 1
         else:
-            prime_list = [2]
+            hashmap = [0 for i in range(n)]
             for i in range(2, n):
-                is_prime = True
-                for prime_num in prime_list:
-                    if i % prime_num == 0:
-                        is_prime = False
-                        break
-                if is_prime:
-                    prime_list.append(i)
-            print(prime_list)
-            return len(prime_list)
+                number = i
+                while i * number < n:
+                    if hashmap[i*number] == 0:
+                        hashmap[i*number] = 1
+                    number += 1
+            count = -2
+            for num in hashmap:
+                if num == 0:
+                    count += 1
+            return count
 
 
 if __name__ == '__main__':
     s = Solution()
-    n = 160
+    n = 10
     r= s.countPrimes(n)
     print(r)
