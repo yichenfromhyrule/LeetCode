@@ -4,25 +4,17 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-        result = [[],["()"],["()()","(())"]]
-        if n<=2:
-            return result[n]
-        else:
-            for i in range(3,n+1):
-                pre_list = result[i-1]
-                curr_list = []
-                for pre_Parenthesis in pre_list:
-                    curr_Parenthesis = pre_Parenthesis + "()"
-                    if curr_Parenthesis not in curr_list:
-                        curr_list.append(curr_Parenthesis)
-                    curr_Parenthesis = "()" + pre_Parenthesis
-                    if curr_Parenthesis not in curr_list:
-                        curr_list.append(curr_Parenthesis)
-                    curr_Parenthesis = "(" + pre_Parenthesis + ")"
-                    if curr_Parenthesis not in curr_list:
-                        curr_list.append(curr_Parenthesis)
-                result.append(curr_list)
-            return result[n]
+        # 0. The result length is 2*n
+        result_list = ['*' for i in range(n)]
+        # 1. The first must be '(' and the last one must be ')'
+        result_list[0] = '('
+        result_list[len(result_list)-1] = ')'
+        # 2. The question is converted to place the last n-1 '(' in 2n-2 place
+        result = []
+        
+
+
+        return result
 
 if __name__ == '__main__':
     s = Solution()
