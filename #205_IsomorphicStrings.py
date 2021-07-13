@@ -7,23 +7,30 @@ class Solution(object):
         """
         hashmap1 = {}
         hashmap2 = {}
+        copy1 = ""
+        copy2 = ""
         if len(s)!=len(t):
             return False
         else:
+            start1 = 0
+            start2 = 0
             for i in range(0, len(s)):
                 if s[i] not in hashmap1:
-                    hashmap1[s[i]] = [i]
+                    start1 += 1
+                    hashmap1[s[i]] = start1
+                    copy1 += str(start1)
                 else:
-                    hashmap1[s[i]].append(i)
+                    copy1 += str(hashmap1[s[i]])
+
                 if t[i] not in hashmap2:
-                    hashmap2[t[i]] = [i]
+                    start2 += 1
+                    hashmap2[t[i]] = start2
+                    copy2 += str(start2)
                 else:
-                    hashmap2[t[i]].append(i)
-        print(hashmap1, hashmap2)
-        l1 = list(hashmap1.values())
-        l2 = list(hashmap2.values())
-        print(l1, l2)
-        return  l1==l2
+                    copy2 += str(hashmap2[t[i]])
+
+        print(copy1, copy2)
+        return  copy2 == copy1
 
 if __name__ == '__main__':
     s = Solution()
