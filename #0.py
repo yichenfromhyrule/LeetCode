@@ -1,26 +1,28 @@
 class Solution(object):
-    def canBeTypedWords(self, text, brokenLetters):
+    def maxPoints(self, points):
         """
-        :type text: str
-        :type brokenLetters: str
+        :type points: List[List[int]]
         :rtype: int
         """
-        hashmap = {}
-        for letter in brokenLetters:
-            hashmap[letter] = True
-        text_array = text.split(" ")
-        count = 0
-        for text_item in text_array:
-            broken = False
-            for char_item in text_item:
-                if char_item in hashmap:
-                    broken = True
-            count += 1 if not broken else 0
-        return count
+        m = len(points)
+        n = len(points[0])
+        if m == 1:
+            return max(points[0])
+        for i in range(1, m):
+            for j in range(0, n):
+                points[i][j] = self.helperFunction(points, i, j)
+        return max(points[m-1])
+
+    def helperFunction(self, points, i, j):
+        max_value = -1
+        prev_list = points[i-1]
+        for m in range (0, len(prev_list)):
+            curr_value = prev_list[m] + points[i][j] - abs(m-j)
+            max_value = curr_value if max_value < curr_value else max_value
+        return max_value
 
 if __name__ == '__main__':
     s = Solution()
-    text = "hello world"
-    brokenLetters = "ad"
-    r= s.canBeTypedWords(text, brokenLetters)
+    points = [[1,5],[2,3],[4,2]]
+    r= s.maxPoints(points)
     print(r)
